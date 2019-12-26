@@ -1,0 +1,103 @@
+$car:golf;
+p{
+  @if($car==GTR){
+    width: 300px;
+  }@else if($car==golf){
+    width: 260px;
+  }
+}
+
+
+@function add($a,$b){
+  @return $a+$b;
+}
+div{
+  width:add(17px,18px);
+}
+div:before{
+  background:rgba(1,1,1,.1)+rgba(2,2,2,.1);
+  border-color:#222222+#333333;
+}
+
+$a:100px;
+$b:50px;
+div{
+  width: $a - $b;
+}
+
+p{
+  content: aaaa+"bbbbbb";
+  color: "re"+d;
+}
+
+.my1{
+  color: #002752;
+  background: #004085;
+}
+
+.my2{
+  border-color: #005cbf;
+  @extend .my1
+}
+
+@mixin my_bg($fx,$c1,$c2){
+  background: -webkit-linear-gradient($fx,$c1,$c2);
+  background: -o-linear-gradient($fx,$c1,$c2);
+  background: -moz-linear-gradient($fx,$c1,$c2);
+  background: -ms-linear-gradient($fx,$c1,$c2);
+}
+div{
+  @include my_bg(top,#000,#e8e8e8);
+}
+p{
+  @include my_bg(bottom,#666,#888);
+}
+@mixin my_border{
+  border: 1px solid #0000ff;
+}
+div{
+   width: 200px;
+  @include my_border;
+}
+@import "my";
+div{
+  border:{width: 100px;style: solid;color: #f00;}
+}
+//变量
+$jd_red:#f10215;
+$normal-width:100px;
+$before-content:"全国通缉xiaohaungya";
+$border-style:solid;
+$my_border:2px solid $jd_red;
+$before-content:"通缉腰子family" !default;
+div{
+  color:$jd_red;
+  width: $normal-width;
+  border: 1px $border-style $jd_red;
+  border-top: $my_border;
+  $my_color:#069;
+  background: $my_color;
+}
+p:before{
+  content:$before-content;
+}
+#content{
+  border:1px solid #f00;
+  p{
+    background: #00f;
+    a{text-decoration: none;}
+    b{text-style:normal;}
+  }
+  div{
+    background: #00f;
+    ul{
+      list-style: none;
+      li{
+        border:0;
+        a{text-decoration: none}
+        img{outline: 0;}
+      }
+    }
+
+  }
+}
